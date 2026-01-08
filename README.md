@@ -111,8 +111,3 @@ Check `VITE_API_URL` in `.env` file and make sure backend is running.
 rm -rf node_modules pnpm-lock.yaml
 pnpm install
 ```
-
----
-
-**Built with ❤️ using React + TypeScript + Vite**
-```
