@@ -14,6 +14,9 @@ interface MovieFormData {
   poster_path: string;
   backdrop_path: string;
   vote_average: number;
+  vote_count: number;
+  popularity: number;
+  adult: boolean;
   original_language: string;
   tmdb_id: number;
 }
@@ -263,6 +266,38 @@ export function MovieModal({
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-1.5">
+                Vote Count
+              </label>
+              <input
+                type="number"
+                value={formData.vote_count}
+                onChange={(e) =>
+                  onFormDataChange({ ...formData, vote_count: parseInt(e.target.value) || 0 })
+                }
+                placeholder="0"
+                className="w-full bg-[#2a2a2a] border border-gray-700 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-2 focus:ring-red-500 outline-none text-sm"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1.5">
+                Popularity
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={formData.popularity}
+                onChange={(e) =>
+                  onFormDataChange({ ...formData, popularity: parseFloat(e.target.value) || 0 })
+                }
+                placeholder="0.0"
+                className="w-full bg-[#2a2a2a] border border-gray-700 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-2 focus:ring-red-500 outline-none text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1.5">
                 TMDB ID
               </label>
               <input
@@ -275,6 +310,20 @@ export function MovieModal({
                 className="w-full bg-[#2a2a2a] border border-gray-700 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-2 focus:ring-red-500 outline-none text-sm"
               />
             </div>
+          </div>
+
+          <div>
+            <label className="flex items-center gap-2 text-sm font-medium text-gray-300">
+              <input
+                type="checkbox"
+                checked={formData.adult}
+                onChange={(e) =>
+                  onFormDataChange({ ...formData, adult: e.target.checked })
+                }
+                className="w-4 h-4 rounded border-gray-700 bg-[#2a2a2a] text-red-600 focus:ring-2 focus:ring-red-500"
+              />
+              <span>Adult Content (18+)</span>
+            </label>
           </div>
 
           <div>
