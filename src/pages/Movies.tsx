@@ -41,6 +41,9 @@ interface MovieFormData {
   poster_path: string;
   backdrop_path: string;
   vote_average: number;
+  vote_count: number;
+  popularity: number;
+  adult: boolean;
   original_language: string;
   tmdb_id: number;
 }
@@ -53,6 +56,9 @@ const initialFormData: MovieFormData = {
   poster_path: '',
   backdrop_path: '',
   vote_average: 0,
+  vote_count: 0,
+  popularity: 0,
+  adult: false,
   original_language: 'en',
   tmdb_id: Math.floor(Math.random() * 1000000),
 };
@@ -177,6 +183,9 @@ export function Movies() {
       poster_path: movie.poster_path,
       backdrop_path: movie.backdrop_path,
       vote_average: movie.vote_average,
+      vote_count: movie.vote_count,
+      popularity: movie.popularity,
+      adult: movie.adult,
       original_language: movie.language?.code || 'en',
       tmdb_id: movie.tmdb_id,
     });
